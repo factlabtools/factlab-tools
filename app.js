@@ -146,7 +146,7 @@
       el.querySelector('.x').addEventListener('click', function () {
         selected = selected.filter(function (id) { return id !== city.id; });
         save(); renderAll();
-        msg('‘' + city.ko + '’을(를) 목록에서 뺐습니다.');
+        msg('‘' + city.ko + '’을(를) 목록에서 뺐습니다.', 'info');
       });
       return el;
     }
@@ -194,9 +194,9 @@
       });
     }
 
-    function msg(text) {
+    function msg(text, kind) {
       var m = $('#clock-msg');
-      if (m) { m.textContent = text; }
+      if (m) { m.textContent = text || ''; m.className = 'form-msg' + (kind ? ' ' + kind : ''); }
     }
 
     /* 도시 검색 */
@@ -226,7 +226,7 @@
       selected.push(city.id);
       save(); renderAll();
       input.value = '';
-      msg('‘' + city.ko + '’을(를) 추가했습니다.');
+      msg('‘' + city.ko + '’을(를) 추가했습니다.', 'ok');
     }
     if (addBtn) addBtn.addEventListener('click', addCity);
     if (input) {

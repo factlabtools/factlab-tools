@@ -133,7 +133,11 @@
   function lines(v) {
     return String(v || '').split('\n').map(function (s) { return s.trim(); }).filter(function (s) { return s; });
   }
-  function msg(el, text) { if (el) el.textContent = text || ''; }
+  function msg(el, text, kind) {
+    if (!el) return;
+    el.textContent = text || '';
+    el.className = 'form-msg' + (kind ? ' ' + kind : '');
+  }
   function esc(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -685,7 +689,7 @@
           this.classList.toggle('off', !!excluded[idx]);
           assigned = null;
           $$('.seat', grid).forEach(function (s) { s.querySelector('.seat-name').textContent = ''; s.classList.remove('filled'); });
-          msg(msgEl, '제외 좌석을 바꿨습니다. 다시 배정해 주세요.');
+          msg(msgEl, '제외 좌석을 바꿨습니다. 다시 배정해 주세요.', 'info');
         });
         grid.appendChild(b);
       }
@@ -710,7 +714,7 @@
         el.querySelector('.seat-name').textContent = nm || '';
         el.classList.toggle('filled', !!nm);
       });
-      msg(msgEl, names.length ? names.length + '명을 ' + seats.length + '자리에 배정했습니다.' : '이름을 입력하면 자리에 이름이 들어갑니다.');
+      msg(msgEl, names.length ? names.length + '명을 ' + seats.length + '자리에 배정했습니다.' : '이름을 입력하면 자리에 이름이 들어갑니다.', 'ok');
     });
     if (copyBtn) copyBtn.addEventListener('click', function () {
       var d = dims();
