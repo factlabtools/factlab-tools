@@ -82,7 +82,7 @@ h1{margin:20px 0 14px;font-size:clamp(30px,5.2vw,44px);line-height:1.2;letter-sp
 .chips b{color:var(--text);font-weight:700}
 
 /* ── tabs ── */
-.tools{margin:32px 0 0}
+.tools{margin-top:32px}
 .tabs{display:flex;gap:var(--space-1);padding:var(--space-1);background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius-container);overflow-x:auto;scrollbar-width:none;width:max-content;max-width:100%}
 .tabs::-webkit-scrollbar{display:none}
