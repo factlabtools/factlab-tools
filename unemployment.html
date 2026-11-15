@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 실업급여 계산기 — 1일 구직급여·조기재취업수당 자동 계산 | 팩트랩 툴</title>
+<meta name="description" content="2026년 1월 1일 이후 이직자 기준 1일 상한 68,100원·하한 66,048원. 최근 3개월 월급과 나이, 고용보험 가입기간만 넣으면 1일 구직급여, 소정급여일수(120~270일), 총 예상 수령액과 조기재취업수당까지 바로 계산됩니다.">
+<link rel="canonical" href="https://factlabtools.github.io/factlab-tools/unemployment.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="팩트랩 툴">
+<meta name="theme-color" content="#0066FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="팩트랩 툴">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="2026 실업급여 계산기 — 1일 구직급여·조기재취업수당 자동 계산 | 팩트랩 툴">
+<meta property="og:description" content="2026년 1월 1일 이후 이직자 기준 1일 상한 68,100원·하한 66,048원. 최근 3개월 월급과 나이, 고용보험 가입기간만 넣으면 1일 구직급여, 소정급여일수(120~270일), 총 예상 수령액과 조기재취업수당까지 바로 계산됩니다.">
+<meta property="og:url" content="https://factlabtools.github.io/factlab-tools/unemployment.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2026 실업급여 계산기 — 1일 구직급여·조기재취업수당 자동 계산 | 팩트랩 툴">
+<meta name="twitter:description" content="2026년 1월 1일 이후 이직자 기준 1일 상한 68,100원·하한 66,048원. 최근 3개월 월급과 나이, 고용보험 가입기간만 넣으면 1일 구직급여, 소정급여일수(120~270일), 총 예상 수령액과 조기재취업수당까지 바로 계산됩니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230066FF'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M32 23v10l7 4' stroke='%23fff' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "2026 실업급여 계산기",
+ "alternateName": "실업급여·조기재취업수당 자동 계산기",
+ "url": "https://factlabtools.github.io/factlab-tools/unemployment.html",
+ "applicationCategory": "FinanceApplication",
+ "operatingSystem": "Web browser (Android, iOS, Windows, macOS)",
+ "browserRequirements": "JavaScript 지원 브라우저",
+ "inLanguage": "ko-KR",
+ "isAccessibleForFree": true,
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "KRW"
+ },
+ "description": "2026년 1월 1일 이후 이직자 기준 1일 상한 68,100원·하한 66,048원. 최근 3개월 월급과 나이, 고용보험 가입기간만 넣으면 1일 구직급여, 소정급여일수(120~270일), 총 예상 수령액과 조기재취업수당까지 바로 계산됩니다.",
+ "publisher": {
+  "@type": "Organization",
+  "name": "팩트랩 툴",
+  "url": "https://factlabtools.github.io/factlab-tools/"
+ },
+ "datePublished": "2026-11-15",
+ "dateModified": "2026-11-15"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "2025년에 퇴사했는데 2026년 기준으로 계산되나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "계산기 위쪽의 이직 시기에서 ‘2025년 12월 31일 이전 이직’을 고르면 됩니다. 2025년 이직자는 1일 상한 66,000원·하한 64,192원이 적용되고, 2026년 1월 1일 이후 이직자만 상한 68,100원·하한 66,048원이 적용됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "월급이 낮은데 왜 계산 결과가 입력한 금액의 60%보다 큰가요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "구직급여는 ‘평균임금의 60%’를 기준으로 하되 하한액이 있습니다. 2026년 하한액은 최저임금 10,320원 × 8시간 × 80% = 66,048원입니다. 월 300만 원이면 60%가 60,000원이라 하한액 66,048원이 적용됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "상한액에 걸리면 총액이 얼마인가요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "2026년 상한액은 68,100원(기초일액 상한 113,500원 × 60%)입니다. 10년 이상 가입한 만 50세 미만이라면 68,100원 × 240일 = 16,344,000원이 최대치입니다. 만 50세 이상·장애인은 270일까지 적용되어 68,100원 × 270일 = 18,387,000원까지 가능합니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "소정급여일수는 어떻게 정해지나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "마지막 직장의 마지막 근로일 기준 만 나이와 고용보험 피보험기간으로 정해집니다. 3년 이내에 공백이 있으면 그 앞의 가입기간을 합산합니다. 만 50세 미만은 120~240일, 만 50세 이상 또는 장애인은 120~270일입니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "자진퇴사도 실업급여를 받을 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "원칙적으로는 어렵습니다. 다만 통근에 3시간 이상 걸리는 경우, 임금체불이 2개월 이상인 경우, 질병·간병 등 정당한 사유가 입증되면 인정될 수 있습니다. 인정 여부는 고용센터가 판단하므로 계산 결과와 별개로 상담을 받아보셔야 합니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "조기재취업수당은 얼마나 받나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "소정급여일수의 1/2 이상을 남긴 상태에서 재취업하고 12개월 이상 계속 고용되면, 남은 일수의 50%를 일시금으로 받습니다. 예를 들어 210일 중 30일만 받고 재취업하면 잔여 180일의 절반인 90일분이 지급됩니다. 계산기의 슬라이더로 지급받은 일수를 넣어 확인해 보세요."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "계산 결과와 실제 수령액이 다를 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "이 계산기는 이직 전 3개월 월평균 임금을 30일로 나눠 60%를 적용하는 간이 방식입니다. 실제로는 이직 전 3개월 임금 총액을 그 기간의 총 일수로 나눈 평균임금을 쓰고, 소정근로시간·상여금·수당 포함 여부에 따라 달라집니다. 정확한 금액은 고용24의 ‘실업급여 모의계산’과 고용센터 상담으로 확인하세요."
+   }
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="mark">◷</span>팩트랩 툴 <small>FACTLAB</small></a>
+    <nav class="hub-nav" aria-label="팩트랩 툴 목록"><a href="index.html">홈</a><a href="draw.html">뽑기</a><a href="pdf.html">PDF</a><a href="image.html">이미지 압축</a><a href="salary.html">연봉 계산기</a><a href="unemployment.html" aria-current="page">실업급여</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="eyebrow">2026년 1월 1일 이후 이직자 기준 · 최저임금 10,320원 반영</span>
+    <h1>2026 실업급여 계산기<br>1일 구직급여부터 조기재취업수당까지</h1>
+    <p class="lede">최근 3개월 월급과 나이, 고용보험 가입기간만 넣으면 1일 구직급여액(상·하한 자동 적용), 소정급여일수, 총 예상 수령액, 조기재취업수당까지 한 번에 계산합니다. 회원가입 없이 무료, 입력값은 브라우저 밖으로 나가지 않습니다.</p>
+    <ul class="chips">
+      <li>1일 상한 <b>68,100원</b></li>
+      <li>1일 하한 <b>66,048원</b></li>
+      <li>소정급여일수 <b>120~270일</b></li>
+      <li>30일 환산 <b>198만~204만원</b></li>
+    </ul>
+  </div>
+
+  <div class="wrap">
+    <section class="card calc" aria-labelledby="calc-title">
+      <h2 id="calc-title" class="sr-only">실업급여 계산 입력</h2>
+      <form id="calc-form" class="calc-grid" novalidate>
+        <div class="form-col">
+          <div class="field">
+            <label for="pay">최근 3개월 월평균 세전 급여</label>
+            <div class="pay-row">
+              <input id="pay" name="pay" type="number" inputmode="decimal" min="0" max="100000000" step="1" value="300" autocomplete="off">
+              <div class="unit-toggle" role="group" aria-label="금액 단위">
+                <label><input type="radio" name="unit" value="man" checked><span>만원</span></label>
+                <label><input type="radio" name="unit" value="won"><span>원</span></label>
+              </div>
+            </div>
+            <p class="help">세전 기준 · 급여명세서의 ‘세전 급여’를 넣으세요. 기본값 300만원.</p>
+          </div>
+
+          <fieldset class="field">
+            <legend>이직 시기</legend>
+            <div class="seg">
+              <label><input type="radio" name="year" value="2026" checked><span>2026-01-01 이후</span></label>
+              <label><input type="radio" name="year" value="2025"><span>2025-12-31 이전</span></label>
+            </div>
+            <p class="help">상·하한액이 다릅니다. 2026년 이직자는 상한 68,100원 / 하한 66,048원.</p>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>만 나이 (마지막 근로일 기준)</legend>
+            <div class="seg">
+              <label><input type="radio" name="age" value="under50" checked><span>만 50세 미만</span></label>
+              <label><input type="radio" name="age" value="over50"><span>만 50세 이상·장애인</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="period">고용보험 피보험기간</label>
+            <select id="period" name="period">
+              <option value="lt1">1년 미만</option>
+              <option value="1to3">1년 이상 3년 미만</option>
+              <option value="3to5">3년 이상 5년 미만</option>
+              <option value="5to10" selected>5년 이상 10년 미만</option>
+              <option value="ge10">10년 이상</option>
+            </select>
+            <p class="help">3년 이내 공백이 있으면 그 앞의 가입기간을 합산합니다. 자격 요건은 이직 전 18개월간 피보험단위기간 180일 이상.</p>
+          </div>
+
+          <p class="form-msg" id="form-msg" role="alert"></p>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="submit">계산하기</button>
+            <button class="btn" type="button" id="copy-btn">결과 복사</button>
+            <button class="btn" type="button" id="reset-btn">초기화</button>
+          </div>
+        </div>
+
+        <div class="card result-card" aria-live="polite">
+          <div class="result-head">
+            <h2>1일 구직급여액</h2>
+            <span class="badge" id="res-badge"></span>
+          </div>
+          <p class="big num" id="res-amount">—</p>
+          <p class="formula" id="res-formula">금액을 입력하면 바로 계산됩니다.</p>
+
+          <ul class="rows">
+            <li><span class="k">30일 환산 월 수령액</span><span class="v num" id="res-30">—</span></li>
+            <li><span class="k">소정급여일수</span><span class="v num" id="res-days">—</span></li>
+          </ul>
+
+          <div class="total">
+            <div class="k">총 예상 수령액</div>
+            <div class="v num" id="res-total">—</div>
+            <div class="sub" id="res-total-sub">소정급여일수 × 1일 구직급여액</div>
+          </div>
+
+          <div class="early">
+            <h3>조기재취업수당 예상액</h3>
+            <p class="note">소정급여일수의 1/2 이상을 남기고 재취업(12개월 이상 계속 고용)할 때, 남은 일수의 50%를 일시금으로 지급합니다.</p>
+            <label for="received" style="font-size:13px;font-weight:800;color:var(--muted)">이미 지급받은 일수</label>
+            <input type="range" id="received" name="received" min="0" max="210" step="1" value="0">
+            <div class="range-labels"><span>0일</span><span>받을 수 있는 최대 <span id="range-max">210일</span></span></div>
+            <div class="early-out"><span class="k">잔여일수</span><span class="v" id="early-remain">—</span></div>
+            <div class="early-out"><span class="k">조기재취업수당</span><span class="v num" id="early-amount">—</span></div>
+            <div class="early-flag ok" id="early-flag">—</div>
+            <p class="note" id="early-total" style="margin-top:8px"></p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="basis">
+      <h2 class="sec">계산 근거를 그대로 보여드립니다</h2>
+      <p class="sec-sub">입력한 값이 어떤 숫자를 거쳐 결과가 되었는지 확인하세요. 2026년 1월 1일 이후 이직자 기준입니다.</p>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>항목</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td>최근 3개월 월평균 세전 급여</td><td class="n" id="tb-pay">—</td></tr>
+            <tr><td>1일 평균임금 (월급 ÷ 30)</td><td class="n" id="tb-avg">—</td></tr>
+            <tr><td>평균임금의 60%</td><td class="n" id="tb-sixty">—</td></tr>
+            <tr><td>적용 1일 구직급여액 (상·하한 반영)</td><td class="n" id="tb-amount">—</td></tr>
+            <tr><td>소정급여일수</td><td class="n" id="tb-days">—</td></tr>
+            <tr><td>총 예상 수령액</td><td class="n" id="tb-total">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="help" style="margin-top:10px">※ 실제 지급액은 이직 전 3개월 임금 총액을 그 기간의 총 일수로 나눈 평균임금으로 산정합니다. 이 계산기는 월 30일 기준의 간이 계산입니다.</p>
+    </section>
+
+    <section class="block" id="limits">
+      <h2 class="sec">2026년 상한액·하한액 — 하한이 작년 상한보다 높아진 해</h2>
+      <p class="sec-sub">고용보험법 제45조·제46조, 같은 법 시행령 제68조 기준. 66,000원은 2025년 12월 31일 이전 이직자의 값입니다.</p>
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr><th>구분</th><th class="n">2025년 이직자</th><th class="n">2026-01-01 이후 이직자</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1일 상한액</td><td class="n">66,000원</td><td class="n"><b>68,100원</b></td></tr>
+            <tr><td>1일 하한액 (8시간)</td><td class="n">64,192원</td><td class="n"><b>66,048원</b></td></tr>
+            <tr><td>30일 환산</td><td class="n">198만 / 192만 5,760원</td><td class="n">204만 3,000원 / 198만 1,440원</td></tr>
+            <tr><td>산정 근거</td><td class="n">최저임금 10,030원 × 8h × 80%</td><td class="n">최저임금 10,320원 × 8h × 80%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:12px">
+        <span aria-hidden="true">⚠️</span>
+        <span><b>2026년에는 하한(66,048원)이 2025년 상한(66,000원)보다 높습니다.</b> 작년 자료로 계산하면 하루 48원씩, 240일이면 11,520원이 어긋납니다. 이직일을 기준으로 연도를 골라야 합니다.</span>
+      </div>
+    </section>
+
+    <section class="block" id="days">
+      <h2 class="sec">내 소정급여일수는 며칠인가 — 나이 × 가입기간</h2>
+      <p class="sec-sub">마지막 직장의 마지막 근로일 기준 만 나이로 고릅니다. 선택한 조건의 행이 표에서 강조됩니다.</p>
+      <div class="tbl-scroll">
+        <table id="days-table">
+          <thead>
+            <tr><th>고용보험 가입기간</th><th class="n">만 50세 미만</th><th class="n">만 50세 이상·장애인</th></tr>
+          </thead>
+          <tbody>
+            <tr data-age="under50" data-period="lt1"><td>1년 미만</td><td class="n">120일</td><td class="n">120일</td></tr>
+            <tr data-age="under50" data-period="1to3"><td>1년 이상 3년 미만</td><td class="n">150일</td><td class="n">180일</td></tr>
+            <tr data-age="under50" data-period="3to5"><td>3년 이상 5년 미만</td><td class="n">180일</td><td class="n">210일</td></tr>
+            <tr data-age="under50" data-period="5to10"><td>5년 이상 10년 미만</td><td class="n">210일</td><td class="n">240일</td></tr>
+            <tr data-age="under50" data-period="ge10"><td>10년 이상</td><td class="n">240일</td><td class="n">270일</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="help" style="margin-top:10px">표의 두 열은 같은 행에서 나이 조건만 다릅니다. 예: 5년 이상 10년 미만 · 만 50세 미만 = 210일, 만 50세 이상 = 240일.</p>
+    </section>
+
+    <section class="block" id="examples">
+      <h2 class="sec">계산 예제 두 건 — 상한과 하한에 걸리는 경우</h2>
+      <div class="two-col" style="margin-top:14px">
+        <div class="panel">
+          <h3>사례 A · 월 300만원, 5년 근무, 만 40세</h3>
+          <ul>
+            <li>1일 평균임금 300만 ÷ 30 = <b>100,000원</b></li>
+            <li>그 60%는 60,000원 → 하한 66,048원보다 낮으므로 <b>하한 적용</b></li>
+            <li>가입기간 5~10년 → <b>210일</b></li>
+            <li>총액 66,048 × 210 = <b>13,870,080원</b> (30일 환산 198만 1,440원)</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>사례 B · 월 400만원, 10년 근무, 만 45세</h3>
+          <ul>
+            <li>1일 평균임금 400만 ÷ 30 ≒ <b>133,333원</b></li>
+            <li>그 60%는 80,000원 → 상한 68,100원을 넘으므로 <b>상한 적용</b></li>
+            <li>가입기간 10년 이상 → <b>240일</b></li>
+            <li>총액 68,100 × 240 = <b>16,344,000원</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="eligibility">
+      <h2 class="sec">수급 자격과 신청 절차</h2>
+      <div class="two-col" style="margin-top:14px">
+        <div class="panel">
+          <h3>자격 요건 3가지</h3>
+          <ul>
+            <li>이직 전 <b>18개월간 피보험단위기간 180일 이상</b></li>
+            <li>근로 의사와 능력이 있음에도 <b>취업하지 못한 상태</b></li>
+            <li>고용센터의 <b>수급자격 인정</b> (자진퇴사는 원칙적으로 불가, 정당한 사유 입증 시 가능)</li>
+          </ul>
+          <p class="help" style="margin-top:10px">정당한 사유 예: 통근 3시간 이상, 임금체불 2개월 이상, 질병·간병, 사업장 이전 등. 판단은 고용센터가 합니다.</p>
+        </div>
+        <div class="panel">
+          <h3>신청 4단계</h3>
+          <ol>
+            <li><b>이직확인서</b> — 회사가 고용보험 시스템에 제출 (미제출 시 요청)</li>
+            <li><b>구직등록</b> — 고용24 또는 워크넷에서 이력서 공개</li>
+            <li><b>수급자격 신청</b> — 고용24 온라인 신청 또는 거주지 관할 고용센터 방문, 온라인 교육 수강</li>
+            <li><b>실업인정</b> — 4주마다 재취업 활동 내역 제출, 승인 시 지급</li>
+          </ol>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px">
+        <span aria-hidden="true">ℹ️</span>
+        <span>실업인정 기간 중 <b>훈련장려금과 구직급여는 함께 받을 수 없습니다.</b> 훈련을 시작하면 그 기간만큼 구직급여를 받지 못하므로, 순서를 정해 계획하세요.</span>
+      </div>
+    </section>
+
+    <section class="block" id="changes">
+      <h2 class="sec">2026년에 달라진 것, 그리고 앞으로 바뀔 것</h2>
+      <div class="panel" style="margin-top:14px">
+        <ul>
+          <li><b>2026년 1월 1일 시행</b> — 상한 68,100원(기초일액 상한 113,500원 × 60%), 하한 66,048원(최저임금 10,320원 × 8h × 80%).</li>
+          <li><b>2028년 1월 1일 예정</b> — 2026년 2월 고용보험법 개정으로 구직급여 산정 기준이 ‘이직 전 3개월 평균임금’에서 ‘1년간 월평균 보수’로 바뀝니다. 2026~2027년 이직자는 현행 방식 그대로입니다.</li>
+          <li><b>지급 방식 개편 논의</b> — 고용보험위원회가 주 7일 지급을 무급휴일을 제외한 주 6일로 바꾸고 상한액을 하한액의 103% 연동형으로 운영하는 방안에 합의했습니다(2026년 9월). 총 지급액은 유지하고 기간이 길어지는 방식이며, 시행 시점은 시행령 개정을 확인해야 합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <h2 class="sec">자주 묻는 질문</h2>
+      <p class="sec-sub">계산기 사용 중 가장 많이 나오는 질문 7가지입니다.</p>
+        <details class="faq">
+          <summary>2025년에 퇴사했는데 2026년 기준으로 계산되나요?</summary>
+          <div class="a"><p>계산기 위쪽의 <b>이직 시기</b>에서 ‘2025년 12월 31일 이전 이직’을 고르면 됩니다. 2025년 이직자는 1일 상한 66,000원·하한 64,192원이 적용되고, 2026년 1월 1일 이후 이직자만 상한 68,100원·하한 66,048원이 적용됩니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>월급이 낮은데 왜 계산 결과가 입력한 금액의 60%보다 큰가요?</summary>
+          <div class="a"><p>구직급여는 ‘평균임금의 60%’를 기준으로 하되 <b>하한액</b>이 있습니다. 2026년 하한액은 최저임금 10,320원 × 8시간 × 80% = <b>66,048원</b>입니다. 월 300만 원이면 60%가 60,000원이라 하한액 66,048원이 적용됩니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>상한액에 걸리면 총액이 얼마인가요?</summary>
+          <div class="a"><p>2026년 상한액은 <b>68,100원</b>(기초일액 상한 113,500원 × 60%)입니다. 10년 이상 가입한 만 50세 미만이라면 68,100원 × 240일 = <b>16,344,000원</b>이 최대치입니다. 만 50세 이상·장애인은 270일까지 적용되어 68,100원 × 270일 = 18,387,000원까지 가능합니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>소정급여일수는 어떻게 정해지나요?</summary>
+          <div class="a"><p>마지막 직장의 <b>마지막 근로일 기준 만 나이</b>와 <b>고용보험 피보험기간</b>으로 정해집니다. 3년 이내에 공백이 있으면 그 앞의 가입기간을 합산합니다. 만 50세 미만은 120~240일, 만 50세 이상 또는 장애인은 120~270일입니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>자진퇴사도 실업급여를 받을 수 있나요?</summary>
+          <div class="a"><p>원칙적으로는 어렵습니다. 다만 통근에 3시간 이상 걸리는 경우, 임금체불이 2개월 이상인 경우, 질병·간병 등 정당한 사유가 입증되면 인정될 수 있습니다. 인정 여부는 <b>고용센터가 판단</b>하므로 계산 결과와 별개로 상담을 받아보셔야 합니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>조기재취업수당은 얼마나 받나요?</summary>
+          <div class="a"><p>소정급여일수의 <b>1/2 이상을 남긴 상태</b>에서 재취업하고 12개월 이상 계속 고용되면, 남은 일수의 50%를 일시금으로 받습니다. 예를 들어 210일 중 30일만 받고 재취업하면 잔여 180일의 절반인 90일분이 지급됩니다. 계산기의 슬라이더로 지급받은 일수를 넣어 확인해 보세요.</p></div>
+        </details>
+        <details class="faq">
+          <summary>계산 결과와 실제 수령액이 다를 수 있나요?</summary>
+          <div class="a"><p>이 계산기는 이직 전 3개월 월평균 임금을 30일로 나눠 60%를 적용하는 <b>간이 방식</b>입니다. 실제로는 이직 전 3개월 임금 총액을 그 기간의 총 일수로 나눈 평균임금을 쓰고, 소정근로시간·상여금·수당 포함 여부에 따라 달라집니다. 정확한 금액은 고용24의 ‘실업급여 모의계산’과 고용센터 상담으로 확인하세요.</p></div>
+        </details>
+    </section>
+
+    <section class="block" id="sources">
+      <h2 class="sec">근거 자료와 한계</h2>
+      <p class="sources">
+        · <a href="https://www.work24.go.kr" target="_blank" rel="noopener">고용24</a> — 실업급여 모의계산, 수급자격 신청<br>
+        · <a href="https://www.moel.go.kr" target="_blank" rel="noopener">고용노동부</a> — 고용보험법 제45조·제46조, 시행령 제68조 / 상담 1350<br>
+        · <a href="https://www.minimumwage.go.kr" target="_blank" rel="noopener">최저임금위원회</a> — 2026년 적용 최저임금 시간급 10,320원<br>
+        · <a href="https://www.ei.go.kr" target="_blank" rel="noopener">고용보험</a> — 이직확인서·피보험자격 확인
+      </p>
+      <p class="disclaimer" style="margin-top:12px">
+        이 계산기는 공개된 법령과 고시를 바탕으로 한 <b>참고용 추정치</b>입니다. 실제 수급 자격, 소정급여일수, 지급액은 이직 사유·피보험단위기간·평균임금 산정 방식에 따라 달라지며 <b>고용센터의 심사</b>로 확정됩니다. 법령·고시가 개정되면 결과가 달라질 수 있으므로, 신청 전 고용24 모의계산과 1350 상담으로 확인하세요. 이 페이지의 내용은 법률·노무 자문이 아닙니다.
+      </p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><b>팩트랩 툴</b> — 브라우저에서 바로 쓰는 생활 도구. 세계 시계의 시간대는 기기 시간대 데이터(서머타임 자동 반영)로 계산하고,
+    모든 입력값은 서버로 전송되지 않습니다. 설치·회원가입 없이 무료로 사용하세요.</p>
+    <div class="footer-links">
+      <a href="index.html">세계 시계</a>
+      <a href="index.html#stopwatch">스톱워치</a>
+      <a href="index.html#timer">타이머</a>
+      <a href="unemployment.html">실업급여 계산기</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="mailto:Ehfqhr2026@gmail.com">문의</a>
+    </div>
+  </div>
+</footer>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

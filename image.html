@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이미지 압축기 — 목표 용량(200KB·500KB·1MB)에 딱 맞추기 | 팩트랩 툴</title>
+<meta name="description" content="증명사진 200KB, 관공서 500KB, 메일 10MB처럼 목표 용량을 정하면 사진을 그 이하로 자동 압축합니다. 품질을 이진 탐색으로 맞추고 필요하면 크기를 줄여 목표를 지킵니다. 여러 장을 한 번에 ZIP으로 받을 수 있고, 이미지는 서버로 전송되지 않습니다.">
+<link rel="canonical" href="https://factlabtools.github.io/factlab-tools/image.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="팩트랩 툴">
+<meta name="theme-color" content="#0066FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="팩트랩 툴">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="이미지 압축기 — 목표 용량(200KB·500KB·1MB)에 딱 맞추기 | 팩트랩 툴">
+<meta property="og:description" content="목표 용량을 정하면 그 이하로 자동 압축합니다. 여러 장 한 번에, ZIP으로 묶어서. 이미지는 서버로 전송되지 않습니다.">
+<meta property="og:url" content="https://factlabtools.github.io/factlab-tools/image.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230066FF'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23fff'/%3E%3Cpath d='M16 46l12-14 8 9 6-6 6 11z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "목표 용량 지정 이미지 압축기",
+ "alternateName": "사진 용량 줄이기 · 증명사진 200KB 압축",
+ "url": "https://factlabtools.github.io/factlab-tools/image.html",
+ "applicationCategory": "MultimediaApplication",
+ "operatingSystem": "Web browser (Android, iOS, Windows, macOS)",
+ "browserRequirements": "JavaScript 지원 브라우저 (Canvas API)",
+ "inLanguage": "ko-KR",
+ "isAccessibleForFree": true,
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+ "description": "목표 용량(200KB·500KB·1MB·10MB)을 정하면 그 이하로 이미지를 압축합니다. 품질 이진 탐색과 크기 축소로 목표를 지키고, 여러 장을 ZIP으로 한 번에 받습니다.",
+ "publisher": { "@type": "Organization", "name": "팩트랩 툴", "url": "https://factlabtools.github.io/factlab-tools/" },
+ "datePublished": "2026-11-15",
+ "dateModified": "2026-11-15"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "목표 용량을 정하면 정말 그 이하로 맞춰지나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "네. 품질을 30~95% 사이에서 이진 탐색해 목표 이하가 되는 가장 높은 품질을 찾고, 가장 낮은 품질에서도 목표를 넘으면 가로·세로를 85%씩 줄여 다시 시도합니다. 그래도 안 되면 그 사실을 알려 드리며, 결과 카드에는 실제 용량과 사용한 품질이 표시됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "증명사진 200KB는 어떻게 맞추나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "목표 용량에서 200KB(증명사진)를 고르고 긴 변을 원본으로 두면 됩니다. 3×4cm 증명사진은 300dpi 기준 354×472픽셀이라 원본 크기를 유지한 채 품질만 조정해도 200KB 이하로 들어가는 경우가 많습니다. 접수 사이트가 3×4 비율이나 특정 픽셀을 요구하면 긴 변을 800px로 맞춰 함께 조정하세요."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "여러 장을 한 번에 압축할 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "됩니다. 사진을 여러 장 끌어다 놓으면 같은 목표 용량·품질·크기 설정으로 차례로 압축하고, 결과 목록에서 하나씩 내려받거나 'ZIP으로 모두 받기'로 한 파일에 담아 받을 수 있습니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "이미지가 서버로 올라가나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "아니요. 이미지는 브라우저의 Canvas API로 기기 안에서 다시 그려 압축됩니다. 업로드 요청이 없어 서버에 사본이 남지 않고, 사진에 찍힌 위치 정보(EXIF)도 결과 파일에 남지 않습니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "왜 PNG가 아니라 JPG로 저장되나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "목표 용량을 지키려면 품질을 조절할 수 있어야 하는데, 그 조절이 되는 형식이 JPEG입니다. PNG는 무손실이라 품질을 낮춰도 용량이 거의 줄지 않습니다. 투명한 배경은 흰색으로 채워 저장합니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "아이폰 HEIC 사진도 되나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "브라우저가 HEIC를 읽지 못하면 압축할 수 없습니다. 아이폰에서 올릴 때는 사진 앱에서 공유할 때 '호환성 우선' 또는 JPG로 변환해 저장한 파일을 쓰면 됩니다. 안드로이드와 갤럭시는 대부분 JPG로 저장됩니다."
+   }
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="mark">◷</span>팩트랩 툴 <small>FACTLAB</small></a>
+    <nav class="hub-nav" aria-label="팩트랩 툴 목록"><a href="index.html">홈</a><a href="draw.html">뽑기</a><a href="pdf.html">PDF</a><a href="image.html" aria-current="page">이미지 압축</a><a href="salary.html">연봉 계산기</a><a href="unemployment.html">실업급여</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="eyebrow">브라우저 안에서만 처리 · 사진 전송 0바이트</span>
+    <h1>목표 용량에 딱 맞추는<br>이미지 압축기</h1>
+    <p class="lede">증명사진 200KB, 관공서 500KB, 메일 1MB처럼 목표를 정하면 그 이하로 맞춰 줍니다. 품질을 자동으로 찾고, 필요하면 크기까지 줄여 목표를 지킵니다. 여러 장을 한 번에 ZIP으로 받을 수 있습니다.</p>
+    <ul class="chips">
+      <li>목표 용량 <b>200KB~10MB</b></li>
+      <li>품질 <b>자동 이진 탐색</b></li>
+      <li>여러 장 <b>ZIP 일괄</b></li>
+      <li>전송 <b>없음</b></li>
+    </ul>
+  </div>
+
+  <div class="wrap">
+    <section class="card calc" aria-labelledby="tool-title">
+      <div class="tool-head">
+        <div>
+          <h2 id="tool-title">이미지 압축</h2>
+          <p>사진을 올리고 목표 용량을 고른 뒤 ‘압축 시작’을 누르세요.</p>
+        </div>
+        <span class="badge cap" id="file-badge">0장</span>
+      </div>
+
+      <div class="privacy">
+        <span class="privacy-icon" aria-hidden="true">🔒</span>
+        <div>
+          <b>이미지가 서버로 전송되지 않고 내 기기(브라우저) 안에서만 처리됩니다.</b>
+          <span>Canvas API로 기기 안에서 다시 그려 압축합니다. 업로드 요청이 없고, 사진의 위치 정보(EXIF)도 결과에서 사라집니다.</span>
+        </div>
+      </div>
+
+      <input type="file" id="file-input" accept="image/*" multiple class="sr-only">
+      <div class="drop" id="drop" tabindex="0" role="button" aria-describedby="drop-help">
+        <span class="drop-icon" aria-hidden="true">＋</span>
+        <b>사진을 끌어다 놓거나 눌러서 선택</b>
+        <span id="drop-help">JPG · PNG · WEBP · 여러 장 가능 · 스마트폰은 눌러서 앨범에서 고르세요</span>
+      </div>
+
+      <ol class="files" id="files" aria-live="polite"></ol>
+
+      <div class="ctrl-grid">
+        <fieldset class="field">
+          <legend>목표 용량</legend>
+          <div class="presets" id="presets">
+            <button class="chip" type="button" data-kb="200">200KB 이하<span>증명사진</span></button>
+            <button class="chip" type="button" data-kb="500">500KB 이하<span>관공서</span></button>
+            <button class="chip" type="button" data-kb="1024">1MB 이하<span>블로그·SNS</span></button>
+            <button class="chip" type="button" data-kb="10240">10MB 이하<span>메일 첨부</span></button>
+            <button class="chip" type="button" data-kb="custom">직접 입력</button>
+          </div>
+          <div class="pay-row" id="custom-row" hidden>
+            <input id="target-kb" type="number" inputmode="numeric" min="20" max="40960" step="10" value="300">
+            <span class="unit-fixed">KB</span>
+          </div>
+          <p class="help" id="target-help">목표 <b>500KB</b> — 이 용량 이하가 되도록 품질을 자동으로 맞춥니다.</p>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>긴 변 크기</legend>
+          <div class="seg four">
+            <label><input type="radio" name="longside" value="0" checked><span>원본 유지</span></label>
+            <label><input type="radio" name="longside" value="1920"><span>1920px</span></label>
+            <label><input type="radio" name="longside" value="1280"><span>1280px</span></label>
+            <label><input type="radio" name="longside" value="800"><span>800px</span></label>
+          </div>
+          <p class="help">관공서는 원본을, 블로그·메일은 1920px 이하를 권합니다. 목표를 못 맞추면 여기서 한 단계씩 더 줄입니다.</p>
+        </fieldset>
+
+        <div class="field">
+          <label for="quality">시작 품질 <span class="num" id="quality-val">85%</span></label>
+          <input type="range" id="quality" min="40" max="95" step="1" value="85">
+          <div class="range-labels"><span>40% (작게)</span><span>95% (선명)</span></div>
+          <p class="help">목표를 넘지 않는 <b>가장 높은 품질</b>을 자동으로 찾습니다. 이 값은 탐색의 상한입니다.</p>
+        </div>
+      </div>
+
+      <p class="form-msg" id="status" role="alert"></p>
+
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn btn-primary btn-lg" type="button" id="run-btn" disabled>압축 시작</button>
+        <button class="btn" type="button" id="zip-btn" hidden>ZIP으로 모두 받기</button>
+        <button class="btn" type="button" id="clear-btn" disabled>전체 삭제</button>
+      </div>
+
+      <ul class="results" id="results"></ul>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="guide">
+      <h2 class="sec">어디에 몇 KB로 내야 하나</h2>
+      <p class="sec-sub">접수처마다 규격이 다릅니다. 아래는 가장 자주 막히는 네 가지입니다.</p>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>쓰임</th><th class="n">목표 용량</th><th>함께 확인할 것</th></tr></thead>
+          <tbody>
+            <tr><td>증명사진 (여권·자격증·이력서)</td><td class="n"><b>200KB 이하</b></td><td>3×4 또는 3.5×4.5 비율, 300dpi(354×472px) 요구가 많습니다</td></tr>
+            <tr><td>관공서·정부24 민원 첨부</td><td class="n"><b>500KB 이하</b></td><td>가로·세로 픽셀 제한(예: 1,000px)이 함께 걸리는 경우가 있습니다</td></tr>
+            <tr><td>블로그·SNS 업로드</td><td class="n"><b>1MB 이하</b></td><td>긴 변 1,920px면 충분합니다. 원본은 따로 보관하세요</td></tr>
+            <tr><td>메일·카톡 첨부</td><td class="n"><b>10MB 이하</b></td><td>여러 장이면 ZIP으로 묶으면 편합니다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:12px">
+        <span aria-hidden="true">ℹ️</span>
+        <span><b>용량이 급할수록 크기부터 줄이세요.</b> 같은 200KB라도 4,000px 원본을 품질 30%로 누르는 것보다 긴 변 800px로 줄여 품질 70%를 쓰는 쪽이 훨씬 선명합니다.</span>
+      </div>
+    </section>
+
+    <section class="block" id="how">
+      <h2 class="sec">어떻게 목표 용량을 맞추나</h2>
+      <div class="two-col" style="margin-top:14px">
+        <div class="panel">
+          <h3>1단계 · 품질 이진 탐색</h3>
+          <ul>
+            <li>품질 40%에서 한 번 인코딩해 목표 이하인지 확인합니다</li>
+            <li>가능하면 40%와 시작 품질 사이를 8번 좁혀 <b>목표를 지키는 가장 높은 품질</b>을 찾습니다</li>
+            <li>결과 카드에 실제 사용한 품질이 표시됩니다</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>2단계 · 크기 축소</h3>
+          <ul>
+            <li>40%에서도 목표를 넘으면 가로·세로를 85%씩 줄여 다시 찾습니다</li>
+            <li>최대 7회까지 줄이며, 그 아래로는 화질이 무너져 멈춥니다</li>
+            <li>그래도 안 되면 ‘목표를 맞추지 못했다’고 정확히 알려 드립니다</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <h2 class="sec">자주 묻는 질문</h2>
+      <p class="sec-sub">압축 전에 가장 많이 확인하는 6가지입니다.</p>
+      <details class="faq">
+        <summary>목표 용량을 정하면 정말 그 이하로 맞춰지나요?</summary>
+        <div class="a"><p>네. 품질을 40~95% 사이에서 이진 탐색해 목표 이하가 되는 가장 높은 품질을 찾고, 가장 낮은 품질에서도 목표를 넘으면 가로·세로를 85%씩 줄여 다시 시도합니다. 그래도 안 되면 그 사실을 알려 드리며, 결과 카드에는 실제 용량과 사용한 품질이 표시됩니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>증명사진 200KB는 어떻게 맞추나요?</summary>
+        <div class="a"><p>목표 용량에서 <b>200KB(증명사진)</b>를 고르고 긴 변을 원본으로 두면 됩니다. 3×4cm 증명사진은 300dpi 기준 354×472픽셀이라 원본 크기를 유지한 채 품질만 조정해도 200KB 이하로 들어가는 경우가 많습니다. 접수 사이트가 3×4 비율이나 특정 픽셀을 요구하면 긴 변을 800px로 맞춰 함께 조정하세요.</p></div>
+      </details>
+      <details class="faq">
+        <summary>여러 장을 한 번에 압축할 수 있나요?</summary>
+        <div class="a"><p>됩니다. 사진을 여러 장 끌어다 놓으면 같은 목표 용량·품질·크기 설정으로 차례로 압축하고, 결과 목록에서 하나씩 내려받거나 <b>‘ZIP으로 모두 받기’</b>로 한 파일에 담아 받을 수 있습니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>이미지가 서버로 올라가나요?</summary>
+        <div class="a"><p>아니요. 이미지는 브라우저의 Canvas API로 기기 안에서 다시 그려 압축됩니다. 업로드 요청이 없어 서버에 사본이 남지 않고, 사진에 찍힌 위치 정보(EXIF)도 결과 파일에 남지 않습니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>왜 PNG가 아니라 JPG로 저장되나요?</summary>
+        <div class="a"><p>목표 용량을 지키려면 품질을 조절할 수 있어야 하는데, 그 조절이 되는 형식이 JPEG입니다. PNG는 무손실이라 품질을 낮춰도 용량이 거의 줄지 않습니다. 투명한 배경은 흰색으로 채워 저장합니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>아이폰 HEIC 사진도 되나요?</summary>
+        <div class="a"><p>브라우저가 HEIC를 읽지 못하면 압축할 수 없습니다. 아이폰에서 올릴 때는 사진 앱에서 공유할 때 <b>‘호환성 우선’</b> 또는 JPG로 변환해 저장한 파일을 쓰면 됩니다. 안드로이드와 갤럭시는 대부분 JPG로 저장됩니다.</p></div>
+      </details>
+    </section>
+
+    <section class="block" id="tech">
+      <h2 class="sec">쓰는 기술과 한계</h2>
+      <p class="sources">
+        · 압축: 브라우저 Canvas API의 <code>toBlob('image/jpeg', quality)</code> — 기기 안에서만 실행<br>
+        · ZIP: <a href="https://stuk.github.io/jszip/" target="_blank" rel="noopener">JSZip 3.10.1</a> (MIT) — CDN에서 불러와 브라우저에서 압축<br>
+        · 서버·업로드 엔드포인트를 두지 않았습니다
+      </p>
+      <p class="disclaimer" style="margin-top:12px">
+        결과 화질은 브라우저의 JPEG 인코더에 따라 조금씩 다릅니다. 원본 파일은 덮어쓰지 않고 새 파일로 내려받으므로, 마음에 들지 않으면 원본으로 다시 시도하면 됩니다. 아주 큰 사진(수천만 화소)은 기기 메모리 한계로 자동으로 줄여 처리합니다.
+      </p>
+    </section>
+    <div id="selftest" hidden></div>
+  </div>
+<noscript><div class="wrap"><p class="disclaimer" style="margin-top:24px">이미지 압축은 브라우저 안에서 JavaScript(Canvas)로 처리합니다. JavaScript를 켜야 사진을 올리고 압축할 수 있습니다.</p></div></noscript>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><b>팩트랩 툴</b> — 브라우저에서 바로 쓰는 생활 도구. 모든 파일과 입력값은 서버로 전송되지 않고 설치·회원가입 없이 무료입니다.</p>
+    <div class="footer-links">
+      <a href="index.html">홈</a>
+      <a href="draw.html">뽑기</a>
+      <a href="pdf.html">PDF 합치기</a>
+      <a href="salary.html">연봉 계산기</a>
+      <a href="unemployment.html">실업급여 계산기</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="mailto:Ehfqhr2026@gmail.com">문의</a>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous"></script>
+<script src="image-core.js"></script>
+<script src="image.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF 합치기·나누기 — 무설치·무전송, 브라우저에서 바로 | 팩트랩 툴</title>
+<meta name="description" content="PDF 여러 개를 드래그해 순서를 바꾸고 한 파일로 합칩니다. 페이지 범위(예: 1-3,5)를 적으면 그 페이지만 뽑아낼 수도 있습니다. 파일이 서버로 전송되지 않고 내 기기 브라우저 안에서만 처리되며, 워터마크·용량 제한·회원가입이 없습니다.">
+<link rel="canonical" href="https://factlabtools.github.io/factlab-tools/pdf.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="팩트랩 툴">
+<meta name="theme-color" content="#0066FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="팩트랩 툴">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="PDF 합치기·나누기 — 무설치·무전송, 브라우저에서 바로 | 팩트랩 툴">
+<meta property="og:description" content="PDF 여러 개를 순서대로 합치고, 페이지 범위로 필요한 페이지만 뽑아냅니다. 파일이 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.">
+<meta property="og:url" content="https://factlabtools.github.io/factlab-tools/pdf.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230066FF'/%3E%3Cpath d='M22 16h14l8 8v24H22z' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M36 16v9h9' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "PDF 합치기·나누기 (무전송)",
+ "alternateName": "PDF 병합 · 페이지 추출 도구",
+ "url": "https://factlabtools.github.io/factlab-tools/pdf.html",
+ "applicationCategory": "UtilitiesApplication",
+ "operatingSystem": "Web browser (Android, iOS, Windows, macOS)",
+ "browserRequirements": "JavaScript 지원 브라우저",
+ "inLanguage": "ko-KR",
+ "isAccessibleForFree": true,
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+ "description": "PDF 여러 개를 순서대로 합치고 페이지 범위로 필요한 페이지만 추출합니다. 파일이 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.",
+ "publisher": { "@type": "Organization", "name": "팩트랩 툴", "url": "https://factlabtools.github.io/factlab-tools/" },
+ "datePublished": "2026-11-15",
+ "dateModified": "2026-11-15"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "정말 파일이 서버로 전송되지 않나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "네. 이 페이지는 PDF를 읽고 합치는 일을 브라우저 안의 JavaScript(pdf-lib)로만 처리합니다. 파일을 올리는 요청 자체가 없어서 서버에 남는 사본이 없고, 인터넷을 끊은 상태에서도 한 번 열어 둔 페이지에서는 동작합니다. 브라우저 개발자 도구의 네트워크 탭을 열어 두고 합쳐 보면 파일 전송 요청이 없는 것을 직접 확인할 수 있습니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "페이지 범위는 어떻게 적나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "각 파일마다 '포함할 페이지' 칸이 있습니다. 비워 두면 전체 페이지가 들어가고, 1-3,5 처럼 쉼표와 붙임표로 적으면 1·2·3·5페이지만 들어갑니다. 3- 처럼 끝을 비우면 3페이지부터 끝까지, -2 처럼 앞을 비우면 처음부터 2페이지까지입니다. 이 칸 하나로 페이지 삭제(남길 페이지만 적기)와 추출(나누기)이 모두 됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "암호가 걸린 PDF도 되나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "암호가 걸린 PDF는 브라우저에서 내용을 풀 수 없어 합칠 수 없습니다. 목록에 '암호가 걸린 PDF라 열 수 없습니다'로 표시되며, 그 파일만 빼고 나머지를 합칩니다. 열기 암호뿐 아니라 인쇄·복사만 제한하는 권한 암호도 같은 이유로 읽지 못하는 경우가 많으니, 암호를 푼 사본을 만들어 올려 주세요."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "합친 PDF에 워터마크나 용량 제한이 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "없습니다. 워터마크를 넣지 않고, 페이지 수·파일 개수·용량에 제한을 두지 않습니다. 다만 처리가 모두 기기에서 이루어지므로 아주 큰 파일(수백 MB)은 기기 메모리에 따라 느려질 수 있습니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "스마트폰에서도 쓸 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "네. 파일 앱이나 카카오톡에서 PDF를 저장한 뒤 브라우저로 이 페이지를 열고 'PDF 선택'을 눌러 고르면 됩니다. 드래그 앤 드롭은 컴퓨터에서만 되고, 스마트폰에서는 파일 선택 버튼을 쓰면 됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "한 파일을 여러 개로 나누려면?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "PDF 하나만 올리고 '포함할 페이지'에 1-3을 적어 합치면 1~3페이지만 담긴 파일이 나옵니다. 이어서 같은 파일을 다시 올려 4-6을 적으면 나머지 구간을 따로 저장할 수 있습니다. 페이지 범위를 비운 채 합치면 원본 그대로 한 파일이 됩니다."
+   }
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="mark">◷</span>팩트랩 툴 <small>FACTLAB</small></a>
+    <nav class="hub-nav" aria-label="팩트랩 툴 목록"><a href="index.html">홈</a><a href="draw.html">뽑기</a><a href="pdf.html" aria-current="page">PDF</a><a href="image.html">이미지 압축</a><a href="salary.html">연봉 계산기</a><a href="unemployment.html">실업급여</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="eyebrow">파일 전송 0바이트 · 브라우저 안에서만 처리</span>
+    <h1>PDF 합치기·나누기<br>설치도, 업로드도 없이</h1>
+    <p class="lede">PDF 여러 개를 끌어다 놓고 순서를 바꿔 한 파일로 합칩니다. 페이지 범위를 적으면 그 페이지만 뽑아낼 수 있어 나누기도 됩니다. 파일은 어디에도 전송되지 않고, 워터마크도 용량 제한도 없습니다.</p>
+    <ul class="chips">
+      <li>합치기 <b>무제한</b></li>
+      <li>페이지 추출 <b>1-3,5</b></li>
+      <li>워터마크 <b>없음</b></li>
+      <li>회원가입 <b>없음</b></li>
+    </ul>
+  </div>
+
+  <div class="wrap">
+    <section class="card calc" aria-labelledby="tool-title">
+      <div class="tool-head">
+        <div>
+          <h2 id="tool-title">PDF 합치기</h2>
+          <p>올린 순서대로 합쳐집니다. 순서는 위·아래 버튼으로 바꾸세요.</p>
+        </div>
+        <span class="badge cap" id="file-badge">0개 파일 · 0페이지</span>
+      </div>
+
+      <div class="privacy">
+        <span class="privacy-icon" aria-hidden="true">🔒</span>
+        <div>
+          <b>파일이 서버로 전송되지 않고 내 기기(브라우저) 안에서만 처리됩니다.</b>
+          <span>PDF를 읽고 합치는 일을 이 페이지의 스크립트가 직접 합니다. 올리는 요청이 없으니 서버에 사본이 남지 않습니다.</span>
+        </div>
+      </div>
+
+      <input type="file" id="file-input" accept="application/pdf,.pdf" multiple class="sr-only">
+      <div class="drop" id="drop" tabindex="0" role="button" aria-describedby="drop-help">
+        <span class="drop-icon" aria-hidden="true">＋</span>
+        <b>PDF 파일을 끌어다 놓거나 눌러서 선택</b>
+        <span id="drop-help">여러 개를 한꺼번에 고를 수 있습니다 · 스마트폰은 눌러서 파일 앱에서 고르세요</span>
+      </div>
+
+      <ol class="files" id="files" aria-live="polite"></ol>
+
+      <p class="form-msg" id="status" role="alert"></p>
+
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn btn-primary btn-lg" type="button" id="merge-btn" disabled>PDF 합치기</button>
+        <button class="btn" type="button" id="clear-btn" disabled>전체 삭제</button>
+      </div>
+
+      <div class="save-row" id="result" hidden>
+        <div class="save-head">
+          <span class="badge floor" id="result-badge">완성</span>
+          <b id="result-name">—</b>
+        </div>
+        <p class="formula" id="result-meta">—</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" id="download-link" href="#" download>다시 내려받기</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="block" id="howto">
+      <h2 class="sec">3단계로 끝납니다</h2>
+      <p class="sec-sub">파일을 올리고, 순서와 페이지를 정하고, 합치면 바로 내려받습니다.</p>
+      <div class="three-col" style="margin-top:14px">
+        <div class="panel">
+          <h3>① 파일 올리기</h3>
+          <ul>
+            <li>점선 칸을 눌러 PDF를 고르거나 끌어다 놓습니다</li>
+            <li>여러 개를 한 번에 올려도 됩니다</li>
+            <li>올리는 순간 각 파일의 페이지 수가 표시됩니다</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>② 순서·페이지 정하기</h3>
+          <ul>
+            <li>↑ ↓ 버튼으로 합칠 순서를 바꿉니다</li>
+            <li>‘포함할 페이지’에 <b>1-3,5</b> 처럼 적으면 그 페이지만 들어갑니다</li>
+            <li>비워 두면 그 파일의 전체 페이지가 들어갑니다</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>③ 합쳐서 내려받기</h3>
+          <ul>
+            <li>‘PDF 합치기’를 누르면 바로 다운로드됩니다</li>
+            <li>결과 카드에서 다시 내려받을 수도 있습니다</li>
+            <li>페이지 크기는 원본 그대로 유지됩니다</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="privacy-note">
+      <h2 class="sec">왜 ‘서버 전송 없음’이 중요한가</h2>
+      <p class="sec-sub">계약서·주민등록등본·병원 서류는 남의 서버에 올리는 순간 통제를 잃습니다.</p>
+      <div class="two-col" style="margin-top:14px">
+        <div class="panel">
+          <h3>이 페이지가 하는 일</h3>
+          <ul>
+            <li>PDF를 브라우저 메모리에서 읽고, 페이지를 복사해 새 파일을 만듭니다</li>
+            <li>다운로드는 브라우저가 만든 임시 주소에서 바로 이루어집니다</li>
+            <li>페이지를 닫으면 올린 파일은 메모리에서 사라집니다</li>
+            <li>광고·추적 스크립트를 넣지 않았습니다</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>직접 확인하는 방법</h3>
+          <ul>
+            <li>컴퓨터에서 <b>F12</b> → <b>Network</b> 탭을 엽니다</li>
+            <li>그 상태로 PDF를 올려 합쳐 봅니다</li>
+            <li>파일을 싣는 요청(POST)이 <b>하나도 없고</b>, 페이지를 여는 요청만 보입니다</li>
+            <li>비행기 모드를 켜도 이미 열어 둔 페이지에서는 합치기가 동작합니다</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px">
+        <span aria-hidden="true">⚠️</span>
+        <span><b>공용 컴퓨터에서는 다 쓰고 페이지를 닫으세요.</b> 파일은 서버에 남지 않지만, 브라우저가 내려받은 결과 파일은 그 컴퓨터의 다운로드 폴더에 남습니다.</span>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <h2 class="sec">자주 묻는 질문</h2>
+      <p class="sec-sub">합치기 전에 가장 많이 확인하는 6가지입니다.</p>
+      <details class="faq">
+        <summary>정말 파일이 서버로 전송되지 않나요?</summary>
+        <div class="a"><p>네. 이 페이지는 PDF를 읽고 합치는 일을 브라우저 안의 JavaScript(pdf-lib)로만 처리합니다. 파일을 올리는 요청 자체가 없어서 서버에 남는 사본이 없고, 인터넷을 끊은 상태에서도 한 번 열어 둔 페이지에서는 동작합니다. 브라우저 개발자 도구의 네트워크 탭을 열어 두고 합쳐 보면 파일 전송 요청이 없는 것을 직접 확인할 수 있습니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>페이지 범위는 어떻게 적나요?</summary>
+        <div class="a"><p>각 파일마다 <b>‘포함할 페이지’</b> 칸이 있습니다. 비워 두면 전체 페이지가 들어가고, <b>1-3,5</b> 처럼 쉼표와 붙임표로 적으면 1·2·3·5페이지만 들어갑니다. <b>3-</b> 처럼 끝을 비우면 3페이지부터 끝까지, <b>-2</b> 처럼 앞을 비우면 처음부터 2페이지까지입니다. 이 칸 하나로 페이지 삭제(남길 페이지만 적기)와 추출(나누기)이 모두 됩니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>암호가 걸린 PDF도 되나요?</summary>
+        <div class="a"><p>암호가 걸린 PDF는 브라우저에서 내용을 풀 수 없어 합칠 수 없습니다. 목록에 ‘암호가 걸린 PDF라 열 수 없습니다’로 표시되며, 그 파일만 빼고 나머지를 합칩니다. 열기 암호뿐 아니라 인쇄·복사만 제한하는 권한 암호도 같은 이유로 읽지 못하는 경우가 많으니, 암호를 푼 사본을 만들어 올려 주세요.</p></div>
+      </details>
+      <details class="faq">
+        <summary>합친 PDF에 워터마크나 용량 제한이 있나요?</summary>
+        <div class="a"><p>없습니다. 워터마크를 넣지 않고, 페이지 수·파일 개수·용량에 제한을 두지 않습니다. 다만 처리가 모두 기기에서 이루어지므로 아주 큰 파일(수백 MB)은 기기 메모리에 따라 느려질 수 있습니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>스마트폰에서도 쓸 수 있나요?</summary>
+        <div class="a"><p>네. 파일 앱이나 카카오톡에서 PDF를 저장한 뒤 브라우저로 이 페이지를 열고 <b>‘PDF 선택’</b>을 눌러 고르면 됩니다. 드래그 앤 드롭은 컴퓨터에서만 되고, 스마트폰에서는 파일 선택 버튼을 쓰면 됩니다.</p></div>
+      </details>
+      <details class="faq">
+        <summary>한 파일을 여러 개로 나누려면?</summary>
+        <div class="a"><p>PDF 하나만 올리고 ‘포함할 페이지’에 <b>1-3</b>을 적어 합치면 1~3페이지만 담긴 파일이 나옵니다. 이어서 같은 파일을 다시 올려 <b>4-6</b>을 적으면 나머지 구간을 따로 저장할 수 있습니다. 페이지 범위를 비운 채 합치면 원본 그대로 한 파일이 됩니다.</p></div>
+      </details>
+    </section>
+
+    <section class="block" id="sources">
+      <h2 class="sec">쓰는 기술과 한계</h2>
+      <p class="sources">
+        · PDF 읽기·쓰기: <a href="https://pdf-lib.js.org" target="_blank" rel="noopener">pdf-lib 1.17.1</a> (MIT) — CDN에서 불러와 브라우저 안에서만 실행<br>
+        · 파일 선택·다운로드: 브라우저 File API와 Blob URL — 파일이 기기를 떠나지 않습니다<br>
+        · 서버·데이터베이스·업로드 엔드포인트를 두지 않았습니다
+      </p>
+      <p class="disclaimer" style="margin-top:12px">
+        합치기는 페이지를 그대로 복사해 새 PDF에 넣는 방식입니다. 아주 오래된 PDF나 특수한 폼(AcroForm)은 입력칸이 일반 텍스트로 바뀔 수 있고, 디지털 서명·북마크·첨부파일은 결과 파일에 남지 않습니다. 서명된 계약서처럼 원본 상태가 중요하면 합치지 말고 원본을 그대로 보관하세요.
+      </p>
+    </section>
+    <div id="selftest" hidden></div>
+  </div>
+<noscript><div class="wrap"><p class="disclaimer" style="margin-top:24px">PDF 합치기는 브라우저 안에서 JavaScript로 처리합니다. JavaScript를 켜야 파일을 올리고 합칠 수 있습니다.</p></div></noscript>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><b>팩트랩 툴</b> — 브라우저에서 바로 쓰는 생활 도구. 모든 파일과 입력값은 서버로 전송되지 않고 설치·회원가입 없이 무료입니다.</p>
+    <div class="footer-links">
+      <a href="index.html">홈</a>
+      <a href="draw.html">뽑기</a>
+      <a href="image.html">이미지 압축</a>
+      <a href="salary.html">연봉 계산기</a>
+      <a href="unemployment.html">실업급여 계산기</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="mailto:Ehfqhr2026@gmail.com">문의</a>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" integrity="sha384-weMABwrltA6jWR8DDe9Jp5blk+tZQh7ugpCsF3JwSA53WZM9/14PjS5LAJNHNjAI" crossorigin="anonymous" onerror="window.__pdfLibFailed=true"></script>
+<script src="pdf-core.js"></script>
+<script src="pdf.js"></script>
+</body>
+</html>

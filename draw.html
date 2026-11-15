@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모두의 뽑기 — 룰렛·사다리·제비뽑기·자리뽑기 (무료) | 팩트랩 툴</title>
+<meta name="description" content="룰렛 돌리기, 사다리 타기, 번호·이름 뽑기와 제비뽑기, 자리뽑기와 모둠 나누기, 주사위·동전·로또까지 한 페이지에서. 설치·회원가입 없이 모바일에서도 바로 쓰는 무료 추첨 도구입니다.">
+<link rel="canonical" href="https://factlabtools.github.io/factlab-tools/draw.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="팩트랩 툴">
+<meta name="theme-color" content="#0066FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="팩트랩 툴">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="모두의 뽑기 — 룰렛·사다리·제비뽑기·자리뽑기 (무료) | 팩트랩 툴">
+<meta property="og:description" content="룰렛 돌리기, 사다리 타기, 번호·이름 뽑기와 제비뽑기, 자리뽑기와 모둠 나누기, 주사위·동전·로또까지 한 페이지에서. 설치·회원가입 없이 모바일에서도 바로 쓰는 무료 추첨 도구입니다.">
+<meta property="og:url" content="https://factlabtools.github.io/factlab-tools/draw.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="모두의 뽑기 — 룰렛·사다리·제비뽑기·자리뽑기 (무료) | 팩트랩 툴">
+<meta name="twitter:description" content="룰렛 돌리기, 사다리 타기, 번호·이름 뽑기와 제비뽑기, 자리뽑기와 모둠 나누기, 주사위·동전·로또까지 한 페이지에서. 설치·회원가입 없이 모바일에서도 바로 쓰는 무료 추첨 도구입니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230066FF'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M32 23v10l7 4' stroke='%23fff' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "모두의 뽑기 — 룰렛·사다리·제비뽑기·자리뽑기",
+ "url": "https://factlabtools.github.io/factlab-tools/draw.html",
+ "applicationCategory": "UtilitiesApplication",
+ "operatingSystem": "Web browser (Android, iOS, Windows, macOS)",
+ "browserRequirements": "JavaScript 지원 브라우저",
+ "inLanguage": "ko-KR",
+ "isAccessibleForFree": true,
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "KRW"
+ },
+ "description": "룰렛 돌리기, 사다리 타기, 번호·이름 뽑기와 제비뽑기, 자리뽑기와 모둠 나누기, 주사위·동전·로또까지 한 페이지에서. 설치·회원가입 없이 모바일에서도 바로 쓰는 무료 추첨 도구입니다.",
+ "featureList": [
+  "HTML5 Canvas 룰렛 — 항목 자유 입력, 프리셋 3종, 결과 이력",
+  "사다리 타기 — 참가자 2~10명, 무작위 사다리 생성, 1명씩·전체 경로 애니메이션",
+  "번호·이름 뽑기 — 범위와 인원 지정, 중복 제외/허용",
+  "제비뽑기 — 통과·꽝 개수 지정, 카드를 눌러 확인",
+  "자리뽑기 — 행×열 좌석 배치, 클릭으로 제외 좌석 설정, 모둠 나누기",
+  "주사위·동전 던지기와 로또 6/45 번호 생성"
+ ],
+ "publisher": {
+  "@type": "Organization",
+  "name": "팩트랩 툴",
+  "url": "https://factlabtools.github.io/factlab-tools/"
+ },
+ "datePublished": "2026-11-15",
+ "dateModified": "2026-11-15"
+}</script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "뽑기 결과나 명단을 저장할 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "결과는 이 페이지 안에서만 유지되고 서버에 저장되지 않습니다. 각 도구의 결과 복사 버튼으로 클립보드에 담아 메모·문서에 붙여 넣으세요. 자리 배정 결과는 인쇄 버튼으로 종이에 바로 출력할 수 있습니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "사다리 타기는 몇 명까지 되나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "참가자 2~10명까지 지원합니다. 결과 칸을 비워 두면 참가자 순서를 뽑고, 결과를 입력하면 참가자 수와 개수가 같아야 합니다. ‘1명씩’은 차례대로 한 명의 경로를, ‘전체 경로’는 모두의 경로를 한 번에 보여줍니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "제비뽑기는 어떻게 쓰나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "전체 제비 수와 통과 개수를 넣고 제비 만들기를 누르면 번호 카드가 나옵니다. 카드를 하나씩 눌러 확인하거나 ‘전체 공개’로 한 번에 볼 수 있습니다. 꽝 개수는 자동으로 계산됩니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "추첨이 공정한가요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "모든 추첨은 브라우저의 Math.random()으로 섞습니다. 서버가 개입하지 않고, 새로고침하면 결과가 사라집니다. 같은 조건으로 다시 뽑으면 결과는 매번 달라집니다."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "모바일에서도 쓸 수 있나요?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "네. 화면 폭에 맞춰 카드와 표가 재배치되고, 룰렛·사다리는 화면 너비에 맞게 그려집니다. 태블릿·PC에서는 더 넓게 보입니다."
+   }
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html"><span class="mark">◷</span>팩트랩 툴 <small>FACTLAB</small></a>
+    <nav class="hub-nav" aria-label="팩트랩 툴 목록"><a href="index.html">홈</a><a href="draw.html" aria-current="page">뽑기</a><a href="pdf.html">PDF</a><a href="image.html">이미지 압축</a><a href="salary.html">연봉 계산기</a><a href="unemployment.html">실업급여</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="eyebrow">수업 · 회의 · 모임에서 바로 쓰는 추첨 도구 · 설치·회원가입 없음</span>
+    <h1>모두의 뽑기<br>룰렛 · 사다리 · 제비뽑기 · 자리뽑기</h1>
+    <p class="lede">구식 화면 대신 손에 잡히는 카드형 UI로 다시 만들었습니다. 룰렛은 캔버스로 부드럽게 돌아가고, 사다리는 경로가 한 명씩 그려지며, 자리뽑기는 교탁 자리를 빼고 배정한 뒤 그대로 인쇄할 수 있습니다. 모든 추첨은 브라우저 안에서만 실행됩니다.</p>
+    <ul class="chips">
+      <li>룰렛 <b>4.2초 스핀</b></li>
+      <li>사다리 <b>2~10명</b></li>
+      <li>제비 <b>최대 50장</b></li>
+      <li>좌석 <b>최대 120석</b></li>
+      <li>로또 <b>6/45</b></li>
+    </ul>
+  </div>
+
+  <div class="wrap tools">
+    <div class="tabs" role="tablist" aria-label="뽑기 도구 선택">
+      <button class="tab" id="tab-roulette" role="tab" aria-selected="true" aria-controls="panel-roulette" data-tab="roulette">🎡 룰렛</button>
+      <button class="tab" id="tab-ladder" role="tab" aria-selected="false" aria-controls="panel-ladder" data-tab="ladder">🪜 사다리</button>
+      <button class="tab" id="tab-pick" role="tab" aria-selected="false" aria-controls="panel-pick" data-tab="pick">🎯 뽑기·제비</button>
+      <button class="tab" id="tab-seat" role="tab" aria-selected="false" aria-controls="panel-seat" data-tab="seat">🏫 자리·모둠</button>
+      <button class="tab" id="tab-game" role="tab" aria-selected="false" aria-controls="panel-game" data-tab="game">🎲 게임·로또</button>
+    </div>
+
+    <div class="tool-wrap">
+      <!-- 룰렛 -->
+      <section id="panel-roulette" role="tabpanel" aria-labelledby="tab-roulette" tabindex="0">
+        <div class="tool-card">
+          <div class="tool-head">
+            <div>
+              <h2>🎡 룰렛 돌리기</h2>
+              <p>항목을 한 줄에 하나씩 넣고 돌리세요. 결과는 아래 이력에 시간과 함께 쌓입니다.</p>
+            </div>
+          </div>
+          <div class="roulette-wrap">
+            <canvas id="r-wheel" width="360" height="360" aria-label="룰렛 판" role="img"></canvas>
+            <button class="btn btn-primary btn-lg" id="r-spin" type="button">돌리기</button>
+            <div class="r-result" id="r-result" aria-live="polite">—</div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="r-items">항목 (한 줄에 하나)</label>
+              <textarea id="r-items" rows="7" spellcheck="false">치킨
+피자
+족발
+떡볶이
+김밥
+샐러드</textarea>
+              <div class="btn-row" id="r-presets" style="margin-top:8px">
+                <button class="chip" type="button" data-items="청소|설거지|빨래|분리수거|화장실 청소">프리셋: 집안일</button>
+                <button class="chip" type="button" data-items="치킨|피자|족발|떡볶이|김밥|샐러드">프리셋: 메뉴</button>
+                <button class="chip" type="button" data-items="커피 쏘기|간식 사오기|발표하기|당번|통과">프리셋: 벌칙</button>
+              </div>
+              <p class="form-msg" id="r-msg" role="status"></p>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:7px" for="r-history">결과 이력 (최근 20건)</label>
+              <ol class="hist" id="r-history"></ol>
+              <div class="btn-row" style="margin-top:8px">
+                <button class="btn" id="r-clear" type="button">이력 지우기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 사다리 -->
+      <section id="panel-ladder" role="tabpanel" aria-labelledby="tab-ladder" tabindex="0" hidden>
+        <div class="tool-card">
+          <div class="tool-head">
+            <div>
+              <h2>🪜 사다리 타기</h2>
+              <p>참가자를 넣고 사다리를 만든 뒤, 한 명씩 또는 전체 경로를 확인하세요.</p>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="l-gen" type="button">사다리 만들기</button>
+              <button class="btn" id="l-one" type="button">1명씩</button>
+              <button class="btn" id="l-all" type="button">전체 경로</button>
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="l-names">참가자 (한 줄에 하나 · 2~10명)</label>
+              <textarea id="l-names" rows="6" spellcheck="false">김철수
+이영희
+박민수
+최지훈
+정수민</textarea>
+            </div>
+            <div class="field">
+              <label for="l-results">결과 (한 줄에 하나 · 비우면 순서 뽑기)</label>
+              <textarea id="l-results" rows="6" spellcheck="false"></textarea>
+              <p class="help">결과 개수는 참가자 수와 같아야 합니다.</p>
+            </div>
+          </div>
+          <p class="form-msg" id="l-msg" role="status"></p>
+          <div class="ladder-area">
+            <canvas id="l-canvas" width="900" height="560" aria-label="사다리" role="img"></canvas>
+          </div>
+          <div class="res-list" id="l-out"></div>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn" id="l-copy" type="button" disabled>결과 복사</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 뽑기 · 제비 -->
+      <section id="panel-pick" role="tabpanel" aria-labelledby="tab-pick" tabindex="0" hidden>
+        <div class="tool-card">
+          <div class="tool-head">
+            <div>
+              <h2>🎯 랜덤 뽑기 · 제비뽑기</h2>
+              <p>번호 범위, 이름 목록, 제비 중 필요한 방식을 고르세요.</p>
+            </div>
+            <div class="seg mini" role="group" aria-label="뽑기 방식">
+              <label><input type="radio" name="p-mode" value="number" checked><span>번호</span></label>
+              <label><input type="radio" name="p-mode" value="name"><span>이름</span></label>
+              <label><input type="radio" name="p-mode" value="lots"><span>제비</span></label>
+            </div>
+          </div>
+          <p class="form-msg" id="p-msg" role="status"></p>
+
+          <div id="p-panel-number">
+            <div class="three-col">
+              <div class="field"><label for="p-from">시작 번호</label><input type="number" id="p-from" value="1" min="1" max="9999"></div>
+              <div class="field"><label for="p-to">끝 번호</label><input type="number" id="p-to" value="30" min="1" max="9999"></div>
+              <div class="field"><label for="p-count">뽑을 인원</label><input type="number" id="p-count" value="3" min="1" max="9999"></div>
+            </div>
+            <label class="switch"><input type="checkbox" id="p-unique" checked> 중복 없이 뽑기</label>
+            <div class="btn-row" style="margin-top:12px">
+              <button class="btn btn-primary" id="p-go" type="button">뽑기</button>
+              <button class="btn" id="p-copy" type="button" disabled>결과 복사</button>
+            </div>
+            <div id="p-out"></div>
+          </div>
+
+          <div id="p-panel-name" hidden>
+            <div class="field">
+              <label for="n-names">이름 목록 (한 줄에 하나)</label>
+              <textarea id="n-names" rows="6" spellcheck="false">김철수
+이영희
+박민수
+최지훈
+정수민
+강하늘
+윤서준
+임지아</textarea>
+            </div>
+            <div class="two-col">
+              <div class="field"><label for="n-count">뽑을 인원</label><input type="number" id="n-count" value="2" min="1" max="200"></div>
+              <div class="field" style="align-self:end">
+                <div class="btn-row">
+                  <button class="btn btn-primary" id="n-go" type="button">뽑기</button>
+                  <button class="btn" id="n-copy" type="button" disabled>결과 복사</button>
+                </div>
+              </div>
+            </div>
+            <div id="n-out"></div>
+          </div>
+
+          <div id="p-panel-lots" hidden>
+            <div class="two-col">
+              <div class="field"><label for="lots-total">전체 제비 수</label><input type="number" id="lots-total" value="10" min="2" max="50"></div>
+              <div class="field"><label for="lots-pass">통과 개수 (나머지는 꽝)</label><input type="number" id="lots-pass" value="3" min="0" max="50"></div>
+            </div>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="lots-go" type="button">제비 만들기</button>
+              <button class="btn" id="lots-reveal" type="button" hidden>전체 공개</button>
+            </div>
+            <p class="help" id="lots-out"></p>
+            <div class="lots-grid" id="lots-grid" hidden></div>
+          </div>
+
+          <div style="border-top:1px solid var(--line);margin-top:24px;padding-top:20px">
+            <label style="display:block;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:8px" for="p-history">추첨 이력 (최근 15건)</label>
+            <ol class="hist" id="p-history"></ol>
+            <div class="btn-row" style="margin-top:8px">
+              <button class="btn" id="p-hist-copy" type="button" disabled>이력 복사</button>
+              <button class="btn" id="p-clear" type="button">이력 지우기</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 자리 · 모둠 -->
+      <section id="panel-seat" role="tabpanel" aria-labelledby="tab-seat" tabindex="0" hidden>
+        <div class="tool-card">
+          <div class="tool-head">
+            <div>
+              <h2>🏫 자리뽑기</h2>
+              <p>좌석을 누르면 제외됩니다(교탁·빈자리). 이름을 넣고 배정한 뒤 인쇄하세요.</p>
+            </div>
+          </div>
+          <div class="three-col">
+            <div class="field"><label for="s-rows">행</label><input type="number" id="s-rows" value="5" min="1" max="12"></div>
+            <div class="field"><label for="s-cols">열</label><input type="number" id="s-cols" value="6" min="1" max="10"></div>
+            <div class="field"><label for="s-names">이름 (한 줄에 하나)</label>
+              <textarea id="s-names" rows="3" spellcheck="false">김철수
+이영희
+박민수
+최지훈
+정수민
+강하늘
+윤서준
+임지아
+한지우
+서예린
+조민재
+백다인</textarea>
+            </div>
+          </div>
+          <p class="form-msg" id="s-msg" role="status"></p>
+          <div class="seat-grid" id="s-grid"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="s-assign" type="button">자리 배정</button>
+            <button class="btn" id="s-copy" type="button">결과 복사</button>
+            <button class="btn" id="s-print" type="button">인쇄</button>
+          </div>
+        </div>
+
+        <div class="tool-card" style="margin-top:14px">
+          <div class="tool-head">
+            <div>
+              <h2>👥 모둠(조) 나누기</h2>
+              <p>이름 목록과 모둠 수를 정하면 인원이 최대한 고르게 나뉩니다.</p>
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="tm-names">이름 목록 (한 줄에 하나)</label>
+              <textarea id="tm-names" rows="6" spellcheck="false">김철수
+이영희
+박민수
+최지훈
+정수민
+강하늘
+윤서준
+임지아
+한지우
+서예린
+조민재
+백다인</textarea>
+            </div>
+            <div class="field">
+              <label for="tm-count">모둠 수</label>
+              <input type="number" id="tm-count" value="3" min="2" max="10">
+              <div class="btn-row" style="margin-top:10px">
+                <button class="btn btn-primary" id="tm-go" type="button">모둠 나누기</button>
+                <button class="btn" id="tm-copy" type="button" disabled>결과 복사</button>
+              </div>
+            </div>
+          </div>
+          <div class="teams" id="tm-out"></div>
+        </div>
+      </section>
+
+      <!-- 게임 · 로또 -->
+      <section id="panel-game" role="tabpanel" aria-labelledby="tab-game" tabindex="0" hidden>
+        <div class="tool-card">
+          <div class="tool-head">
+            <div>
+              <h2>🎲 미니 게임 · 로또</h2>
+              <p>주사위·동전으로 가볍게 정하고, 로또 번호는 6/45로 뽑습니다.</p>
+            </div>
+          </div>
+
+          <div class="game-block">
+            <h3>주사위</h3>
+            <p class="gd">던질 주사위 개수를 고르세요 (1~6개).</p>
+            <div class="two-col">
+              <div class="field"><label for="dice-count">주사위 개수</label><input type="number" id="dice-count" value="2" min="1" max="6"></div>
+              <div class="field" style="align-self:end"><button class="btn btn-primary" id="dice-roll" type="button">굴리기</button></div>
+            </div>
+            <div class="dice-row" id="dice-out"></div>
+          </div>
+
+          <div class="game-block">
+            <h3>동전 던지기</h3>
+            <p class="gd">앞·뒤를 한 번에 여러 개 던집니다 (1~20개).</p>
+            <div class="two-col">
+              <div class="field"><label for="coin-count">동전 개수</label><input type="number" id="coin-count" value="5" min="1" max="20"></div>
+              <div class="field" style="align-self:end"><button class="btn btn-primary" id="coin-toss" type="button">던지기</button></div>
+            </div>
+            <div class="coin-row" id="coin-out"></div>
+          </div>
+
+          <div class="game-block">
+            <h3>로또 6/45 번호</h3>
+            <p class="gd">1~45 중 6개를 중복 없이 뽑아 오름차순으로 보여드립니다.</p>
+            <div class="two-col">
+              <div class="field"><label for="lotto-games">게임 수 (1~5)</label><input type="number" id="lotto-games" value="5" min="1" max="5"></div>
+              <div class="field" style="align-self:end">
+                <div class="btn-row">
+                  <button class="btn btn-primary" id="lotto-go" type="button">번호 뽑기</button>
+                  <button class="btn" id="lotto-copy" type="button" disabled>결과 복사</button>
+                </div>
+              </div>
+            </div>
+            <div id="lotto-out"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="block">
+      <h2 class="sec">현장에서 이렇게 씁니다</h2>
+      <p class="sec-sub">수업·회의·모임에서 자주 쓰는 조합입니다.</p>
+      <div class="three-col">
+        <div class="panel">
+          <h3>🏫 교실</h3>
+          <p>자리뽑기로 교탁 자리를 빼고 배정한 뒤 <b>인쇄</b>해 책상에 붙입니다. 모둠 나누기로 4인 1조를 만들고, 제비뽑기로 발표 순서를 정합니다.</p>
+        </div>
+        <div class="panel">
+          <h3>💼 회의·워크숍</h3>
+          <p>룰렛으로 아이스브레이킹 주제를 고르고, 사다리로 역할(진행·기록·발표)을 배분합니다. 사다리 결과는 <b>복사</b>해 회의록에 붙입니다.</p>
+        </div>
+        <div class="panel">
+          <h3>🎉 모임</h3>
+          <p>룰렛 프리셋으로 메뉴를 정하고, 번호 뽑기로 경품 당첨자를 뽑습니다. 주사위·동전은 게임의 선공을 정할 때 씁니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="sec">자주 묻는 질문</h2>
+      <p class="sec-sub">결과 보관과 사용 범위에 관한 질문입니다.</p>
+        <details class="faq">
+          <summary>뽑기 결과나 명단을 저장할 수 있나요?</summary>
+          <div class="a"><p>결과는 <b>이 페이지 안에서만</b> 유지되고 서버에 저장되지 않습니다. 각 도구의 <b>결과 복사</b> 버튼으로 클립보드에 담아 메모·문서에 붙여 넣으세요. 자리 배정 결과는 <b>인쇄</b> 버튼으로 종이에 바로 출력할 수 있습니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>사다리 타기는 몇 명까지 되나요?</summary>
+          <div class="a"><p>참가자 <b>2~10명</b>까지 지원합니다. 결과 칸을 비워 두면 참가자 순서를 뽑고, 결과를 입력하면 참가자 수와 개수가 같아야 합니다. ‘1명씩’은 차례대로 한 명의 경로를, ‘전체 경로’는 모두의 경로를 한 번에 보여줍니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>제비뽑기는 어떻게 쓰나요?</summary>
+          <div class="a"><p>전체 제비 수와 통과 개수를 넣고 <b>제비 만들기</b>를 누르면 번호 카드가 나옵니다. 카드를 하나씩 눌러 확인하거나 ‘전체 공개’로 한 번에 볼 수 있습니다. 꽝 개수는 자동으로 계산됩니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>추첨이 공정한가요?</summary>
+          <div class="a"><p>모든 추첨은 브라우저의 <b>Math.random()</b>으로 섞습니다. 서버가 개입하지 않고, 새로고침하면 결과가 사라집니다. 같은 조건으로 다시 뽑으면 결과는 매번 달라집니다.</p></div>
+        </details>
+        <details class="faq">
+          <summary>모바일에서도 쓸 수 있나요?</summary>
+          <div class="a"><p>네. 화면 폭에 맞춰 카드와 표가 재배치되고, 룰렛·사다리는 화면 너비에 맞게 그려집니다. 태블릿·PC에서는 더 넓게 보입니다.</p></div>
+        </details>
+    </section>
+
+    <section class="block">
+      <h2 class="sec">다른 도구</h2>
+      <div class="two-col">
+        <a class="tool-link" href="index.html">
+          <div>
+            <b>세계 시계 · 스톱워치 · 타이머</b>
+            <span>서울 기준 시차가 보이는 세계 시계, 0.01초 스톱워치, 비프음 타이머</span>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="tool-link" href="unemployment.html">
+          <div>
+            <b>2026 실업급여 계산기</b>
+            <span>1일 구직급여(상한 68,100원·하한 66,048원)와 조기재취업수당 계산</span>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="block">
+      <p class="disclaimer">
+        이 페이지의 추첨은 모두 브라우저의 난수로 즉석에서 계산되며, 결과는 서버에 저장되지 않습니다.
+        새로고침하면 이력과 배정 결과가 사라지므로 필요한 결과는 복사하거나 인쇄해 두세요.
+        공식 대회·법적 추첨처럼 기록 보존이 필요한 자리에는 별도의 공증 절차를 사용하세요.
+      </p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><b>팩트랩 툴</b> — 브라우저에서 바로 쓰는 생활 도구. 세계 시계의 시간대는 기기 시간대 데이터(서머타임 자동 반영)로 계산하고,
+    모든 입력값은 서버로 전송되지 않습니다. 설치·회원가입 없이 무료로 사용하세요.</p>
+    <div class="footer-links">
+      <a href="index.html">세계 시계</a>
+      <a href="index.html#stopwatch">스톱워치</a>
+      <a href="index.html#timer">타이머</a>
+      <a href="unemployment.html">실업급여 계산기</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="mailto:Ehfqhr2026@gmail.com">문의</a>
+    </div>
+  </div>
+</footer>
+<script src="app.js"></script>
+<script src="draw.js"></script>
+</body>
+</html>
